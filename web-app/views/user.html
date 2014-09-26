@@ -1,0 +1,15 @@
+<div ng-controller="UserController as controller">
+    <span id="account-list" class="pull-right" style="margin:2px 0 0 10px;font-size: 15px;">
+        <account-dropdown></account-dropdown>
+    </span>
+    <span id="user-name" class="pull-right" style="margin-left:10px;">
+		{{controller.user.first}}
+	</span>
+    <span id="user-icon" class="pull-right" style="margin-top: -3px; cursor:pointer;"
+            onclick="window.open('https://en.gravatar.com/');">
+         <gravatar-image data-gravatar-email="controller.user.username"
+                         data-gravatar-size="33"
+                         data-gravatar-rating="pg"
+                         data-gravatar-default="mm"></gravatar-image>
+    </span>
+</div>

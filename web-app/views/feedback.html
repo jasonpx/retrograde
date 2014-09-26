@@ -1,0 +1,44 @@
+<div class="data-container hx2" style="height: 100%; position: relative">
+    <div class="content-section-body" style="height:90%;">
+        <div style="height:100%;">
+            <ul class="feedback-list frame" style="max-height: 100%; overflow-x: auto; list-style-type: none; padding-right: 7px;">
+                <li ng-repeat="feed in feedback">
+                    <div class="pull-right">
+                        <span class="badge" style="cursor: default; background-color: limegreen; font-size: 7pt; padding-left: 3px; padding-right: 3px; padding-top: 2px; padding-bottom: 2px;">{{feed.upVotes}}</span>
+                        <span class="badge" style="cursor: default; background-color: red; font-size: 7pt; padding-left: 3px; padding-right: 4px; padding-top: 2px; padding-bottom: 2px">{{feed.downVotes}}</span>
+                    </div>
+                    <div class="pull-left" ng-switch on="amIOwner(feed)">
+                        <span ng-switch-when="true">
+                            <i title="Up Vote" class="fa fa-arrow-circle-up" height="15px" width="15px" style="color: rgba(255,255,255,0);"></i>
+                            <i title="Down Vote" class="fa fa-arrow-circle-down" height="15px" width="15px" style="color: rgba(255,255,255,0);"></i>
+                        </span>
+                        <span ng-switch-default>
+                            <i title="Up Vote" class="fa fa-arrow-circle-up" height="15px" width="15px" style="cursor: pointer; color: rgb(224, 224, 224);" ng-click='upVote(feed.id)'></i>
+                            <i title="Down Vote" class="fa fa-arrow-circle-down" height="15px" width="15px" style="cursor: pointer; color: rgb(224, 224, 224);" ng-click='downVote(feed.id)'></i>
+                        </span>
+                    </div>
+                    <div class="pull-left" style="max-width: 70%; padding-left: 3px; vertical-align: middle;">
+                        <span ng-class="{white: feed.discussed, yellow: !feed.discussed}" ng-click="markDiscussed(feed.id)">{{feed.text}}</span>
+                    </div>
+                    <div style="clear: both;"></div>
+                </li>
+            </ul>
+        </div>
+        <div style='position: absolute; bottom:0; left: 0; right:0'>
+            <div class="input-group">
+                <input id="newEntry_well" type="text"
+                       ng-model="newEntry"
+                       ng-keydown="checkForSend($event)"
+                       class="form-control"
+                       style="padding: 3px; font-size: .85em; color: white; background-color: transparent;  height:28px;">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button" style="margin-top: 0; padding: 3px;"
+                            ng-click="sendFeedback()">
+                        <i class="fa fa-send-o" style="color: grey"></i>
+                    </button>
+                </span>
+            </div>
+
+        </div>
+    </div>
+</div>

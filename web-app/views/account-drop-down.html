@@ -1,0 +1,12 @@
+<div ng-controller="AccountDropdownCtrl">
+  <span class="dropdown" on-toggle="toggled(open)">
+      <div class="dropdown-toggle pointer">
+          <i class="fa fa-toggle-down"></i>
+      </div>
+      <ul class="dropdown-menu" style="margin-left: -155px; z-index: 100000;">
+          <li ng-repeat="choice in items">
+              <a href="{{choice.link}}" target="{{choice.target}}">{{choice.name}}</a>
+          </li>
+      </ul>
+    </span>
+</div>

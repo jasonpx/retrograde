@@ -1,0 +1,27 @@
+<div class="content-section-header">
+    <h4><i class="fa fa-trophy"></i> Rewards</h4>
+</div>
+<div id="list-of-rewards"  tabindex="0" class="content-section-body" ng-controller="Rewards as rewards" ng-keydown="checkForEasterEgg($event)">
+    <div>
+        <ul class="list-unstyled text-center" droppable>
+            <li ng-repeat="rewardType in rewards.rewardTypes">
+                <div class="reward"  id="reward{{rewardType.id}}" ng-show="rewardType.id != 5 || showHiddenRewards  "
+                     style="background-image: url('{{rewardType.link.replace('.png', '_outline.png')}}');
+                        background-position-x: 50%;
+                        background-repeat: no-repeat;
+                        min-height: 75px;
+                        min-width: 75px;
+                        background-size: 75px;
+                        background-repeat: no-repeat;
+                        padding-bottom: 10px;">
+                    <div style="min-height:75px">
+                    <div id="{{rewardType.id}}" class="dragContainer pointer" draggable="true" ng-hide="{{rewardType.isUsed}}">
+                        <img class="dragShape" ng-src='{{rewardType.link}}' ng-hide="{{rewardType.isUsed}}">
+                    </div>
+                    </div>
+                    <!--<div ng-class="{myVote: moodType.mine}">{{rewardType.display}}</div>-->
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

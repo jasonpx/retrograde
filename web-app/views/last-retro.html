@@ -1,0 +1,14 @@
+<div ng-controller="LastRetroController as lastRetroCtrl">
+    <div class="content-section-header">
+        <h4><i class="fa fa-history"></i> From Last Retro </h4>
+    </div>
+    <div class="content-section-body">
+        <ul style="list-style-type: none; padding-left: 7px;">
+            <li ng-repeat="feedbackItem in lastRetroCtrl.feedback">
+                <label for="feedback_checkbox_{{feedbackItem.id}}" style="font-weight: normal;">
+                    <input id="feedback_checkbox_{{feedbackItem.id}}" ng-checked="{{feedbackItem.completed}}" type="checkbox" ng-click="lastRetroCtrl.toggleCompleted(feedbackItem.id)" /> {{feedbackItem.text}}</label>
+            </li>
+            <li ng-show="!lastRetroCtrl.feedback.length">No items to display</li>
+        </ul>
+    </div>
+</div>

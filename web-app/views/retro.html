@@ -1,0 +1,73 @@
+<div class='bar' ng-show="retroStatus">Completed</div>
+<div class="section pull-left" style="width:25%;">
+    <div class="section-wrapper height40">
+        <div class="content-section" style="height: 100%;">
+            <div id="last-retro-panel">
+                <last-retro></last-retro>
+            </div>
+        </div>
+    </div>
+    <div class="section-wrapper height60">
+        <div class="content-section" style="height: 100%;">
+            <div id="what-went-well" class="content-section-header">
+                <h4><i class="fa fa-star"></i> What Went Well</h4>
+            </div>
+            <feedback type="well"></feedback>
+        </div>
+    </div>
+</div>
+<div class="section pull-left" style="width:50%;">
+    <div class="section-wrapper height40">
+        <div class="content-section section-middle" style="height:47%;">
+            <div id="team-mood">
+                <moods></moods>
+            </div>
+        </div>
+        <div class="content-section section-middle" style="height:47%; overflow-y: hidden;">
+            <div id="how-did-sprint-go">
+                <sprint-meter></sprint-meter>
+            </div>
+        </div>
+    </div>
+    <div class="section-wrapper height60">
+        <div class="content-section pull-left section-middle" style="width:49%;height:100%;">
+            <div id="what-did-not-go-well" class="content-section-header">
+                <h4><i class="fa fa-warning"></i> What Went Poorly</h4>
+            </div>
+            <feedback type="bad"></feedback>
+        </div>
+        <div class="content-section pull-right section-middle" style="width:49%;height:100%;">
+            <div id="what-to-change" class="content-section-header">
+                <h4><i class="fa fa-history"></i> What We'd Like To Change</h4>
+            </div>
+            <feedback type="change"></feedback>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<div class="section pull-left" style="width:11%;">
+    <div class="section-wrapper" style="height:60%; min-height: 316px;">
+        <div class="content-section" style="height:99%;margin-right:0;">
+            <div id="rewards">
+                <rewards></rewards>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="section pull-left" style="width:14%;">
+    <div class="section-wrapper"  style="height:60%; min-height: 316px;">
+        <div class="content-section" style="height:99%">
+            <div id="team-users">
+                <team-panel></team-panel>
+            </div>
+        </div>
+    </div>
+    <div class="section-wrapper" style="height:40%; min-height: 222px;">
+        <div class="content-section" style="height: 85%;width: 159%;margin-left: -69%;">
+            <div id="word-cloud" class="content-section-header">
+                <word-cloud></word-cloud>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>

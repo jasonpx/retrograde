@@ -1,0 +1,18 @@
+<div id="list-of-moods" class="" ng-controller="Moods as moods">
+    <div class="content-section-header">
+        <h4><i class="fa fa-meh-o"></i> Team Mood</h4>
+    </div>
+    <div class="content-section-body">
+        <ul class="list">
+            <div ng-repeat="moodType in moods.moodTypes">
+                <li ng-click='moodClicked(moodType.id)'>
+                    <div>
+                        <img ng-src='{{moodType.link}}' style="width:30px; height:30px;">
+                        <div ng-class="{myVote: moodType.mine}">{{moodType.display}}</div>
+                        <div ng-class="{myVote: moodType.mine}">{{moodType.nbVotes}}</div>
+                    </div>
+                </li>
+            </div>
+        </ul>
+    </div>
+</div>

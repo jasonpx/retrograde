@@ -1,0 +1,55 @@
+<div style="margin: 25px;">
+    <div style="width:50%; margin: auto;">
+        <div class="container-fluid" ng-controller="UserProfileController as controller">
+            <div class="row">
+                <div class="col-xs-12"><h1>User Profile</h1></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6">&nbsp;</div>
+                <div class="col-xs-6">&nbsp;</div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6"><label for="email">Email Address:</label></div>
+                <div class="col-xs-6"><input id="email" class="form-control" type="text"
+                                             ng-model="controller.user.username"/></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6"><label for="first">First Name:</label></div>
+                <div class="col-xs-6"><input id="first" class="form-control" type="text"
+                                             ng-model="controller.user.first"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6"><label for="last">Last Name:</label></div>
+                <div class="col-xs-6"><input id="last" class="form-control" type="text"
+                                             ng-model="controller.user.last"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6">&nbsp;</div>
+                <div class="col-xs-6">&nbsp;</div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6"><label for="newPassword1">New Password:</label></div>
+                <div class="col-xs-6"><input id="newPassword1" class="form-control" type="password" ng-model="controller.newPassword"/></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6"><label for="newPassword2">Confirm New Password:</label></div>
+                <div class="col-xs-6"><input id="newPassword2" class="form-control" type="password" ng-model="controller.newPassword_verify"/></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6">&nbsp;</div>
+                <div class="col-xs-6">&nbsp;</div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6"></div>
+                <div class="col-xs-6">
+                    <button id="save" class="btn btn-success pull-right" ng-click="controller.updateUserProfile()">Update</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 text-center" ng-bind="controller.message"></div>
+            </div>
+        </div>
+    </div>
+</div>

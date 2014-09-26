@@ -1,0 +1,49 @@
+
+<style>
+    .retro-meter-disabled::-webkit-slider-thumb {
+        display: none;
+    }
+</style>
+
+<div class="content-section-header">
+    <h4><i class="fa fa-tachometer"></i> How did the sprint go?</h4>
+</div>
+<div style="position: relative; top: 20px;" ng-controller="SprintMeterController as controller">
+    <div class="sliderContainer" style="padding-left: 10px; padding-right: 10px;">
+        <div style="margin-left: 5px; margin-right: 5px;">
+            <div class="slider" style="position: relative; width: 100%;">
+                <input type="range" min="0" max="100" list="number" style="width:100%"
+                       ng-class="{'retro-meter-disabled': controller.isLocked}"
+                       ng-change="controller.sendSelection()"
+                       ng-disabled="controller.isLocked"
+                       ng-model="controller.user" ng-show="controller.user > -1"
+                       ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500, 'blur': 0} }"/>
+                <datalist id="number">
+                    <option>0</option>
+                    <option>10</option>
+                    <option>20</option>
+                    <option>30</option>
+                    <option>40</option>
+                    <option>50</option>
+                    <option>60</option>
+                    <option>70</option>
+                    <option>80</option>
+                    <option>90</option>
+                    <option>100</option>
+                </datalist>
+            </div>
+            <span style="z-index: 51; position: absolute; bottom: -2px; right: 8px; font-size: 12px; color: #DDDDDD; float: right;" ng-show="controller.user > -1">Awesome</span>
+            <span style="z-index: 51; position: absolute; bottom: -2px; left: 10px; font-size: 12px; color: #DDDDDD; float: left;" ng-show="controller.user > -1">Horrible</span>
+            <div style="margin-left: 6px; margin-right: 6px; padding-right: 5px;">
+                <div style="padding-left: {{controller.score}}%; position: relative; top: -35px" ng-show="controller.score > -1">
+                    <div style="width: auto; display: inline-block; float: left;">
+                        <div style="z-index: 50; left: 1px; color: white; margin-top: 1px; border-left: 3px solid yellow; height: 38px; padding-left: 0; width: 60px; position: relative;">
+                            <span style="position: relative; bottom: -40px; left: -22px; font-size: 12px; color: white;">Avg (<span ng-bind="controller.score"></span>)</span>
+                        </div>
+                    </div>
+                    <span id="saveMessage" style="display:none; z-index: 51; position: absolute; bottom: 0; right: 0; font-size: 12px; color: yellow; float: right;">Saved</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

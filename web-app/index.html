@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html ng-app="retrograde" ng-controller="IndexController as index">
+<head>
+    <link rel="stylesheet" type="text/css" href="js/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="js/bootstrap/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" type="text/css" href="js/font-awesome/css/font-awesome.min.css"/>
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lobster">
+    <link rel="stylesheet" type="text/css" href="css/application.css"/>
+
+    <script type="text/javascript" src="js/d3/d3.min.js"></script>
+    <script type="text/javascript" src="js/d3.layout.cloud/d3.layout.cloud.js"></script>
+    <script type="text/javascript" src="js/trianglify/trianglify.js"></script>
+    <script type="text/javascript" src="js/angular/angular.min.js"></script>
+    <script type="text/javascript" src="js/angular/angular-route.min.js"></script>
+    <script type="text/javascript" src="js/ui-bootstrap/ui-bootstrap-tpls-0.11.0.min.js"></script>
+    <script type="text/javascript" src="js/jquery/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="js/angular-gravatardirective/angularjs-gravatardirective.min.js"></script>
+    <script type="text/javascript" src="assets/sockjs.js?compile=false"></script>
+    <script type="text/javascript" src="assets/stomp.js?compile=false"></script>
+    <script type="text/javascript" src="assets/spring-websocket.js?compile=false"></script>
+
+    <!-- App -->
+    <script type="text/javascript" src="js/app.js"></script>
+
+    <!-- Services -->
+    <script type="text/javascript" src="js/scripts/services/moodService.js"></script>
+    <script type="text/javascript" src="js/scripts/services/rewardService.js"></script>
+    <script type="text/javascript" src="js/scripts/services/notificationService.js"></script>
+    <script type="text/javascript" src="js/scripts/services/userService.js"></script>
+    <script type="text/javascript" src="js/scripts/services/feedbackService.js"></script>
+    <script type="text/javascript" src="js/scripts/services/retroService.js"></script>
+    <script type="text/javascript" src="js/scripts/services/sprintService.js"></script>
+    <script type="text/javascript" src="js/scripts/services/userProfileService.js"></script>
+
+    <!-- Controllers -->
+    <script type="text/javascript" src="js/scripts/controllers/moodController.js"></script>
+    <script type="text/javascript" src="js/scripts/controllers/rewardController.js"></script>
+    <script type="text/javascript" src="js/scripts/controllers/selectRetroController.js"></script>
+    <script type="text/javascript" src="js/scripts/controllers/feedbackController.js"></script>
+    <script type="text/javascript" src="js/scripts/controllers/lastRetro.js"></script>
+    <script type="text/javascript" src="js/scripts/controllers/teamPanel.js"></script>
+    <script type="text/javascript" src="js/scripts/controllers/sprintMeter.js"></script>
+    <script type="text/javascript" src="js/scripts/controllers/user.js"></script>
+    <script type="text/javascript" src="js/scripts/controllers/accountDropdown.js"></script>
+    <script type="text/javascript" src="js/scripts/controllers/wordCloud.js"></script>
+    <script type="text/javascript" src="js/scripts/controllers/newRetro.js"></script>
+    <script type="text/javascript" src="js/scripts/controllers/userProfile.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title ng-bind-template="{{appName}}"></title>
+</head>
+
+<body class="appBody" ng-controller="MainController">
+<div class="app-wrapper">
+    <div id="header-content">
+        <div id="app-name" class="section-30 pull-left" style="cursor: default;" onclick="javascript:location.href='#Retros';">
+            <h1 style="font-size: 50px; font-family: 'Lobster', cursive; margin-top: -8px; cursor: pointer;">{{appName}}</h1>
+        </div>
+        <div id="app-controls" class="section-30 pull-left text-right h-align-center" style="white-space: nowrap;">
+            <span style="position:relative; bottom: -11px; font-size: 1.5em;">{{currentSprint}}</span>
+            <button id="finish-retro-btn" type="button" class="btn btn-default" style="margin-left: 30px;" ng-click="finishRetro()" ng-show="$routeParams.retroId">Finish Retro</button>
+            <button id="export-retro-btn" type="button" class="btn btn-default" style="margin-left: 30px;" ng-click="exportRetro()" ng-show="$routeParams.retroId">Export Retro</button>
+        </div>
+        <div class="section-30 pull-right text-right h-align-center" style="font-size: 25px; padding-top: 15px; margin-right: 10px; width: initial;">
+            <user></user>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div id="body-content" ng-view></div>
+</div>
+<script type="text/javascript">
+
+    var t = new Trianglify({
+        noiseIntensity: 0.0,
+        cellpadding: 10,
+        cellsize: 100,
+        fillOpacity: 0.5,
+        strokeOpacity: 0.1
+    });
+    var pattern = t.generate(window.innerWidth, window.innerHeight);
+    document.body.setAttribute('style', 'background-size: cover; min-height: 100%; background-repeat: no-repeat; background-position: center center; background-image: ' + pattern.dataUrl);
+
+    // mouse position;
+    var currentMousePos = { x: -1, y: -1 };
+    $(document).mousemove(function(event) {
+        currentMousePos.x = event.pageX;
+        currentMousePos.y = event.pageY;
+    });
+
+</script>
+</body>
+</html>

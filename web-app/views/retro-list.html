@@ -1,0 +1,131 @@
+<style>
+    .content {
+    }
+
+    #placeholder-body {
+        position: relative;
+        border: 0;
+        overflow: scroll;
+        max-height: 100%;
+        padding: 20px;
+    }
+
+    .split-tile {
+        float: left;
+    }
+
+    .split-left {
+        width: 50%;
+    }
+
+    .split-left .content {
+        margin-left: auto;
+        margin-right: 0;
+    }
+
+    .split-right {
+        width: 50%;
+        padding-left: 10px;
+    }
+
+    .split-right .content {
+        margin-left: 0;
+        margin-right: auto;
+    }
+</style>
+
+<div id="placeholder-body" ng-controller="RetroListController as controller">
+    <div class="tile-1 split-tile split-left">
+        <div class="content">
+
+            <!-- new retro -->
+            <div class="content-section" style="min-height:50px">
+                <div class="content-section-header">
+                    <h4><i class="fa fa-child"></i> Create a Retro</h4>
+                </div>
+                <div ng-controller="NewRetroController as newController" style="margin-top: 10px;">
+                    <form class="form-inline">
+                        <div class="form-group" style="padding-right: 10px;">
+                            <label for="selectedTeam">Team:</label>
+                            <select id="selectedTeam" class="form-control"
+                                    style="min-width: 110px; font-size: .9em; padding: 3px 6px; height: 28px;"
+                                    ng-model="selectedTeam"
+                                    ng-options="team.id as team.name for team in teams"
+                                    ng-change="updateSprints()"></select>
+                        </div>
+                        <div class="form-group">
+                            <label for="selectedSprint">Sprint:</label>
+                            <select id="selectedSprint" class="form-control"
+                                    style="min-width: 110px; font-size: .9em; padding: 3px 6px; height: 28px;"
+                                    ng-model="selectedSprint"
+                                    ng-options="sprint.id as sprint.name for sprint in sprints"
+                                    ng-change="enableCreate()"></select>
+                            <button class="form-control" id="new-retro-btn" type="button" class="btn btn-default"
+                                    ng-disabled="!createEnabled" ng-click="newRetro()" style="font-size: .9em;  padding: 3px 10px; height: 28px; margin-left: 10px;">Create
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- retro list -->
+            <div class="content-section" style="margin-top: 25px;">
+                <div class="content-section-header">
+                    <h4><i class="fa fa-th-list"></i> Retrospectives</h4>
+                </div>
+                <div style="margin-top: 10px;">
+                    <div ng-repeat="retro in controller.retros" class="retroRow"
+                         ng-click="go('/Retro/' + retro.id + '/' + retro.team.id)"
+                         >
+                        <div>
+                            <div class="by pull-right">by: {{retro.moderator.first + ' ' + retro.moderator.last }}</div>
+                            <div class="title">{{retro.team.name}}: {{retro.sprint.name}}</div>
+                        </div>
+
+                        <div class="status pull-right">
+                            <span ng-show="{{retro.status.name == 'IN_PROGRESS'}}">In Progress</span>
+                            <span ng-show="{{retro.status.name == 'COMPLETE'}}">Complete</span>
+                        </div>
+                        <div class="date">
+                            {{retro.sprint.startDate | date }} - {{retro.sprint.endDate | date}}
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="tile-2 split-tile split-right" style="overflow: auto;">
+        <div class="content">
+
+            <div style="margin-top: 10px;">
+                <div>
+                    <h4><i class="fa fa-binoculars"></i> <label for="crossTeamSprint">Cross-Team Metrics by Sprint </label></h4>
+                </div>
+                <select id="crossTeamSprint" class="form-control" id="sprint-list" ng-model="sprintModel"
+                        ng-options="sprint.id as sprint.name for sprint in sprints"
+                        ng-change="sprintSelectionChanged()">
+                </select>
+            </div>
+            <div class="content-section" style="height:125px; width: 100%; margin: 0; min-width: 455px; margin-top: 25px;">
+                <div id="team-mood">
+                    <moods></moods>
+                </div>
+            </div>
+            <div class="content-section" style="height:110px; width: 100%; margin: 0; margin-top: 25px;">
+                <div id="how-did-sprint-go">
+                    <sprint-meter></sprint-meter>
+                </div>
+            </div>
+            <div class="content-section" style="height: 300px; width: 100%; margin: 0; margin-top: 25px;">
+                <div id="word-cloud" class="content-section-header">
+                    <word-cloud></word-cloud>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

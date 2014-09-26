@@ -1,0 +1,45 @@
+<div id="team-of-users" class="data-container hx2" ng-controller="TeamController as teamCtrl">
+    <div class="content-section-header">
+        <h4><i class="fa fa-users"></i> Team</h4>
+    </div>
+    <div class="content-section-body">
+        <ul class="user-list">
+            <li id="{{user.id}}" droppable drop="handleDrop" ng-repeat="user in users" class="user-list-item">
+                <div class="pull-left" style="width:45%;">
+                    <span onmouseover="$(this).next().show();"
+                          onmousemove="$(this).next().css('top', currentMousePos.y + 5);$(this).next().css('left', currentMousePos.x - ($(this).next().innerWidth() / 2));"
+                          onmouseout="$(this).next().hide();">
+                        <gravatar-image data-gravatar-email="user.username"
+                                    data-gravatar-size="40"
+                                    data-gravatar-rating="pg"
+                                    data-gravatar-default="mm"></gravatar-image>
+                    </span>
+                    <span style="position: absolute;
+    width: auto;
+    height: auto;
+    display: none;">
+                        <gravatar-image data-gravatar-email="user.username"
+                                    data-gravatar-size="75"
+                                    data-gravatar-rating="pg"
+                                    data-gravatar-default="mm"></gravatar-image>
+                    </span>
+
+                    <div>{{user.first}}</div>
+                </div>
+                <div class="pull-right" style="width:54%; margin-left:1%">
+                    <div ng-repeat="reward in user.rewards" class="reward-list-item">
+                        <span onmouseover="$(this).next().show();"
+                              onmousemove="$(this).next().css('top', currentMousePos.y + 5);$(this).next().css('left', (currentMousePos.x - ($(this).next().innerWidth() / 2)));"
+                              onmouseout="$(this).next().hide();">
+                            <img width="15px" height="15px" ng-src='{{reward.rewardLink}}'>
+                        </span>
+                        <span class="zoomLeft">
+                            <img width="75px" ng-src="{{reward.rewardLink}}">
+                        </span>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </li>
+        </ul>
+    </div>
+</div>
