@@ -23,7 +23,7 @@
             'new-retro',
             'userProfile'
         ]);
-    app.constant('root', '/retrograde');
+    app.constant('root', '');
 
     app.directive('lastRetro', function() { return { restrict: 'E', templateUrl: 'views/last-retro.html' }; });
     app.directive('teamPanel', function() { return { restrict: 'E', templateUrl: 'views/team-panel.html' }; });
@@ -127,7 +127,7 @@
         }
     });
 
-    app.controller('IndexController', function($scope,$route, $routeParams, $location, retroService, notificationService) {
+    app.controller('IndexController', function($scope, $route, $routeParams, $location, retroService, notificationService) {
         $scope.appName = appName;
         $scope.$location = $location;
         $scope.$routeParams = $routeParams;
@@ -207,7 +207,7 @@
         };
 
         $scope.exportRetro = function() {
-            var win = window.open('/retrograde/api/retro/' + $routeParams.retroId + '/export', '_blank');
+            var win = window.open('/api/retro/' + $routeParams.retroId + '/export', '_blank');
             win.focus();
         };
 

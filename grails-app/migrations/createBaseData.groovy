@@ -17,11 +17,11 @@ databaseChangeLog = {
                 MoodType smart = new MoodType(display: "smart", link: "images/mood_smart.png").save()
                 MoodType energized = new MoodType(display: "energized", link: "images/mood_energized.png").save()
 
-                RewardType getItTogether = new RewardType(display: "Get it Together!", link: '/retrograde/images/sticker_cat.png').save()
-                RewardType youTried = new RewardType(display: "You tried", link: '/retrograde/images/sticker_youTried.png').save()
-                RewardType goodJob = new RewardType(display: "Good Job!", link: '/retrograde/images/sticker_goodJob.png').save()
-                RewardType superman = new RewardType(display: "Superman", link: '/retrograde/images/sticker_superman.png').save()
-                RewardType scratch = new RewardType(display: "Scratch n' Sniff", link: '/retrograde/images/sticker_scratch.png').save()
+                RewardType getItTogether = new RewardType(display: "Get it Together!", link: 'images/sticker_cat.png').save()
+                RewardType youTried = new RewardType(display: "You tried", link: 'images/sticker_youTried.png').save()
+                RewardType goodJob = new RewardType(display: "Good Job!", link: 'images/sticker_goodJob.png').save()
+                RewardType superman = new RewardType(display: "Superman", link: 'images/sticker_superman.png').save()
+                RewardType scratch = new RewardType(display: "Scratch n' Sniff", link: 'images/sticker_scratch.png').save()
             }
         }
     }
